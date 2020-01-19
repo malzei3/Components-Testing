@@ -1,0 +1,218 @@
+﻿<Window x:Class="ImageProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImageProject"
+        mc:Ignorable="d"
+        Title="ImageProject"
+        WindowState="Maximized"
+        WindowStyle="None"
+        Background="#2f384d">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Background ="Black">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock 
+                Grid.Column="0" 
+                Margin="10"
+                Text="Standard Component" 
+                FontSize="18" 
+                Foreground="White"
+                TextAlignment="Center"
+                />
+            
+            <Image Grid.Column="0"
+                Margin="40"
+                Name="imgDef"
+                Stretch="Fill" 
+                />
+            
+            <TextBlock 
+                Margin="10"
+                Grid.Column="1" 
+                Text="Damaged Component" 
+                FontSize="18" 
+                Foreground="White"
+                TextAlignment="Center"
+                />
+
+            <Image Grid.Column="1"
+                Margin="40"
+                Name="imgPhoto"
+                Stretch="Fill" 
+                />
+        </Grid>
+
+        <Grid Grid.Column="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.75*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="0.25*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel 
+                    Grid.Row="0"
+                    Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    Margin="20">
+                
+                <!--Select default image-->
+                <TextBlock 
+                    Text="Select a standard component:" 
+                    FontSize="14" Foreground="White" 
+                    TextWrapping="WrapWithOverflow"/>
+                <Button 
+                        ToolTip="Open an image of a component has good structure"
+                        Name="OpenDefImage" 
+                        Click="OpenDefImage_Click"
+                        Content="Browse"
+                        />
+                
+                <!--Select image-->
+                <TextBlock 
+                    Text="Select a damaged component to compare it with standard:" 
+                    Margin="0,20,0,0"
+                    FontSize="14" Foreground="White" 
+                    TextWrapping="WrapWithOverflow"/>
+                <Button 
+                        ToolTip="Open an image of a component to compare it with the standard image"
+                        Name="OpenImage" 
+                        Click="OpenImage_Click"
+                        Content="Browse"
+                        />
+
+            </StackPanel>
+
+            <StackPanel 
+                Grid.Row="1"
+                Margin="40"
+                >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    
+                    <TextBlock 
+                    Grid.Row="0"
+                    Text="Standard" 
+                    TextAlignment="Center"
+                    Margin="10"
+                    FontSize="12" Foreground="White" 
+                    TextWrapping="WrapWithOverflow"/>
+                    <Ellipse
+                    Grid.Row="1"
+                    Width="40"
+                    Height="40"
+                    Fill="{StaticResource RedGradientBrush}"
+                    Stroke="#604e63"
+                    StrokeThickness="4"
+                    Canvas.Left="10"
+                    Canvas.Top="100"
+                    Visibility="{Binding IsStandredSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibility}}"/>
+                    <Ellipse
+                    Grid.Row="1"
+                    Width="40"
+                    Height="40"
+                    Fill="{StaticResource GreenGradientBrush}"
+                    Stroke="#604e63"
+                    StrokeThickness="4"
+                    Canvas.Left="10"
+                    Canvas.Top="100"
+                    Visibility="{Binding IsNotStandredSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibility}}"/>
+
+
+                    <TextBlock 
+                    Grid.Row="2"
+                    Text="Damaged" 
+                    TextAlignment="Center"
+                    Margin="10"
+                    FontSize="12" Foreground="White" 
+                    TextWrapping="WrapWithOverflow"/>
+                    <Ellipse
+                    Grid.Row="3"
+                    Width="40"
+                    Height="40"
+                    Fill="{StaticResource RedGradientBrush}"
+                    Stroke="#604e63"
+                    StrokeThickness="4"
+                    Canvas.Left="10"
+                    Canvas.Top="100"
+                    Visibility="{Binding IsDamagedSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibility}}"/>
+                    <Ellipse
+                    Grid.Row="3"
+                    Width="40"
+                    Height="40"
+                    Fill="{StaticResource GreenGradientBrush}"
+                    Stroke="#604e63"
+                    StrokeThickness="4"
+                    Canvas.Left="10"
+                    Canvas.Top="100"
+                    Visibility="{Binding IsNotDamagedSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibility}}"/>
+
+                    <TextBlock 
+                    Grid.Row="4"
+                    Text="Detect" 
+                    TextAlignment="Center"
+                    Margin="10"
+                    FontSize="12" Foreground="White" 
+                    TextWrapping="WrapWithOverflow"/>
+                    <Ellipse
+                    Grid.Row="5"
+                    Width="40"
+                    Height="40"
+                    Fill="{StaticResource RedGradientBrush}"
+                    Stroke="#604e63"
+                    StrokeThickness="4"
+                    Canvas.Left="10"
+                    Canvas.Top="100"
+                    Visibility="{Binding IsDetected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibility}}"/>
+
+                    <Ellipse
+                    Grid.Row="5"
+                    Width="40"
+                    Height="40"
+                    Fill="{StaticResource GreenGradientBrush}"
+                    Stroke="#604e63"
+                    StrokeThickness="4"
+                    Canvas.Left="10"
+                    Canvas.Top="100"
+                    Visibility="{Binding IsNotDetected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibility}}"/>
+
+
+                </Grid>
+            </StackPanel>
+
+            <!--Close Application-->
+            <Button 
+                    Name="closeButton" 
+                    ToolTip="Close Application"
+                    Grid.Row="2"
+                    Click="CloseButton_Click"
+                    Content="X"
+                    Foreground="Red"
+                    VerticalAlignment="Bottom"
+                    />
+        </Grid>
+        
+    </Grid>
+</Window>
