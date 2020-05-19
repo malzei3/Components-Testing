@@ -44,3 +44,26 @@ C:\Users\Tarek alzeiback\Documents\GitHub\Components-Testing\ImageProject\ImageP
 C:\Users\Tarek alzeiback\Documents\GitHub\Components-Testing\ImageProject\ImageProject\obj\Debug\ImageProject.exe
 C:\Users\Tarek alzeiback\Documents\GitHub\Components-Testing\ImageProject\ImageProject\obj\Debug\ImageProject.pdb
 C:\Users\Tarek alzeiback\Documents\GitHub\Components-Testing\ImageProject\ImageProject\obj\Debug\ImageProject.csprojAssemblyReference.cache
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\bin\Debug\ImageProject.exe.config
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\bin\Debug\ImageProject.exe
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\bin\Debug\ImageProject.pdb
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\bin\Debug\ImageDiff.dll
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\bin\Debug\Vintasoft.Imaging.dll
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\bin\Debug\Vintasoft.Shared.dll
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\bin\Debug\ImageDiff.pdb
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\bin\Debug\Vintasoft.Imaging.xml
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\bin\Debug\Vintasoft.Shared.xml
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\obj\Debug\ImageProject.csprojAssemblyReference.cache
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\obj\Debug\MainWindow.g.cs
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\obj\Debug\App.g.cs
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\obj\Debug\ImageProject_MarkupCompile.cache
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\obj\Debug\ImageProject_MarkupCompile.lref
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\obj\Debug\App.baml
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\obj\Debug\MainWindow.baml
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\obj\Debug\ImageProject.g.resources
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\obj\Debug\ImageProject.Properties.Resources.resources
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\obj\Debug\ImageProject.csproj.GenerateResource.cache
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\obj\Debug\ImageProject.csproj.CoreCompileInputs.cache
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\obj\Debug\ImageProject.csproj.CopyComplete
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\obj\Debug\ImageProject.exe
+C:\Users\mhdal\Documents\GitHub\Components-Testing\ImageProject\ImageProject\obj\Debug\ImageProject.pdb

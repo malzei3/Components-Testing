@@ -82,16 +82,17 @@ namespace ImageProject
                 BoundingBoxPadding = 10,
                 BoundingBoxMode = BoundingBoxModes.Multiple
             };
+
             this.comparer = new BitmapComparer(options);
 
-            this.isStandredSelected = true;
-            this.isNotStandredSelected = false;
+            this.isStandredSelected = false;
+            this.isNotStandredSelected = true;
 
-            this.isDamagedSelected = true;
-            this.isNotDamagedSelected = false;
+            this.isDamagedSelected = false;
+            this.isNotDamagedSelected = true;
 
-            this.isDetected = true;
-            this.isNotDetected = false;
+            this.isDetected = false;
+            this.isNotDetected = true;
         }
 
 
@@ -119,8 +120,8 @@ namespace ImageProject
                 this.imgDef.Source = new BitmapImage(new Uri(op.FileName));
 
                 this.image1 = new Bitmap(op.FileName);
-                this.isStandredSelected = false;
-                this.isNotStandredSelected = true;
+                this.isStandredSelected = true;
+                this.isNotStandredSelected = false;
                 RaisePropertyChanged("IsStandredSelected");
                 RaisePropertyChanged("isNotStandredSelected");
 
@@ -141,8 +142,8 @@ namespace ImageProject
             {
                 image2 = new Bitmap(op.FileName);
 
-                this.isDamagedSelected = false;
-                this.isNotDamagedSelected = true;
+                this.isDamagedSelected = true;
+                this.isNotDamagedSelected = false;
                 RaisePropertyChanged("IsDamagedSelected");
                 RaisePropertyChanged("IsNotDamagedSelected");
 
@@ -150,15 +151,15 @@ namespace ImageProject
 
                 if(image2.Flags != image1.Flags)
                 {
-                    this.isDetected = false;
-                    this.isNotDetected = true;
+                    this.isDetected = true;
+                    this.isNotDetected = false;
                     RaisePropertyChanged("IsDetected");
                     RaisePropertyChanged("IsNotDetected");
                 }
                 else
                 {
-                    this.isDetected = true;
-                    this.isNotDetected = false;
+                    this.isDetected = false;
+                    this.isNotDetected = true;
                     RaisePropertyChanged("IsDetected");
                     RaisePropertyChanged("IsNotDetected");
                 }
@@ -188,7 +189,7 @@ namespace ImageProject
         }
 
         /// <summary>
-        /// Interaction logic for MainWindow.xaml
+        /// Is Standred Selected Property
         /// </summary>
         public bool IsStandredSelected
         {
@@ -207,7 +208,7 @@ namespace ImageProject
         }
 
         /// <summary>
-        /// 
+        /// Is Not Standred Selected Property
         /// </summary>
         public bool IsNotStandredSelected
         {
@@ -226,7 +227,7 @@ namespace ImageProject
         }
 
         /// <summary>
-        /// Interaction logic for MainWindow.xaml
+        /// Is Damaged Selected Property 
         /// </summary>
         public bool IsDamagedSelected
         {
@@ -245,7 +246,7 @@ namespace ImageProject
         }
 
         /// <summary>
-        /// Interaction logic for MainWindow.xaml
+        /// Is Not Damaged Selected property 
         /// </summary>
         public bool IsNotDamagedSelected
         {
@@ -264,7 +265,7 @@ namespace ImageProject
         }
 
         /// <summary>
-        /// Interaction logic for MainWindow.xaml
+        /// Is Detected flag.
         /// </summary>
         public bool IsDetected
         {
@@ -283,7 +284,7 @@ namespace ImageProject
         }
 
         /// <summary>
-        /// Interaction logic for MainWindow.xaml
+        /// Is Not Detected Property 
         /// </summary>
         public bool IsNotDetected
         {
@@ -303,7 +304,7 @@ namespace ImageProject
 
 
         /// <summary>
-        /// 
+        /// Raise Property Changed
         /// </summary>
         /// <param name="propertyName"></param>
         private void RaisePropertyChanged(string propertyName)
