@@ -4,33 +4,53 @@
              xmlns:local="clr-namespace:ImageProject"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <LinearGradientBrush x:Key="GrayBlueGradientBrush" StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="DarkGray" Offset="0" />
-            <GradientStop Color="#CCCCFF" Offset="0.5" />
-            <GradientStop Color="DarkGray" Offset="1" />
-        </LinearGradientBrush>
 
-        <LinearGradientBrush x:Key="RedGradientBrush" StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="DarkRed" Offset="0" />
-            <GradientStop Color="Red" Offset="0.5" />
-            <GradientStop Color="DarkRed" Offset="1" />
-        </LinearGradientBrush>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
 
-        <LinearGradientBrush x:Key="GreenGradientBrush" StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="DarkGreen" Offset="0" />
-            <GradientStop Color="LightGreen" Offset="0.5" />
-            <GradientStop Color="DarkGreen" Offset="1" />
-        </LinearGradientBrush>
-        
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="{StaticResource GrayBlueGradientBrush}" />
-            <Setter Property="BorderBrush" Value="#604e63" />
-            <Setter Property="BorderThickness" Value="4" />
-            <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="FontSize" Value="18" />
-            <Setter Property="Width" Value="80" />
-            <Setter Property="Height" Value="40" />
-            <Setter Property="Margin" Value="10" />
-        </Style>
+            <LinearGradientBrush x:Key="GrayBlueGradientBrush" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="DarkGray" Offset="0" />
+                <GradientStop Color="#CCCCFF" Offset="0.5" />
+                <GradientStop Color="DarkGray" Offset="1" />
+            </LinearGradientBrush>
+
+            <LinearGradientBrush x:Key="RedGradientBrush" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="DarkRed" Offset="0" />
+                <GradientStop Color="Red" Offset="0.5" />
+                <GradientStop Color="DarkRed" Offset="1" />
+            </LinearGradientBrush>
+
+            <LinearGradientBrush x:Key="GreenGradientBrush" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="DarkGreen" Offset="0" />
+                <GradientStop Color="LightGreen" Offset="0.5" />
+                <GradientStop Color="DarkGreen" Offset="1" />
+            </LinearGradientBrush>
+
+            <Style x:Key="PinkButton" TargetType="{x:Type Button}">
+                <Setter Property="Background" Value="{StaticResource GrayBlueGradientBrush}" />
+                <Setter Property="BorderBrush" Value="#604e63" />
+                <Setter Property="BorderThickness" Value="4" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="Width" Value="80" />
+                <Setter Property="Height" Value="40" />
+                <Setter Property="Margin" Value="10" />
+            </Style>
+
+            <Image x:Key="FolderIcon" Source="Icons/icons8-folder-64.png" />
+
+            <Style x:Key="FolderButton" TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignFloatingActionDarkButton}">
+                <Setter Property="BorderBrush" Value="#604e63" />
+                <Setter Property="BorderThickness" Value="4" />
+                <Setter Property="Background" Value="{StaticResource GrayBlueGradientBrush}" />
+            </Style>
+            
+            
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

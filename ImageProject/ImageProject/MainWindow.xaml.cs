@@ -17,52 +17,52 @@ namespace ImageProject
     {
 
         /// <summary>
-        /// Interaction logic for MainWindow.xaml
+        /// Bit map Comparer 
         /// </summary>
         private BitmapComparer comparer;
 
         /// <summary>
-        /// Interaction logic for MainWindow.xaml
+        /// First image 
         /// </summary>
         private Bitmap image1;
 
         /// <summary>
-        /// Interaction logic for MainWindow.xaml
+        /// Second image
         /// </summary>
         private Bitmap image2;
 
         /// <summary>
-        /// Interaction logic for MainWindow.xaml
+        /// Is standred selected flag
         /// </summary>
         private bool isStandredSelected;
 
         /// <summary>
-        /// Interaction logic for MainWindow.xaml
+        /// Is not standred selected flag
         /// </summary>
         private bool isNotStandredSelected;
 
         /// <summary>
-        /// Interaction logic for MainWindow.xaml
+        /// Is damaged selected flag
         /// </summary>
         private bool isDamagedSelected;
 
         /// <summary>
-        /// Interaction logic for MainWindow.xaml
+        /// Is not damged selected flag
         /// </summary>
         private bool isNotDamagedSelected;
 
         /// <summary>
-        /// Interaction logic for MainWindow.xaml
+        /// Is detected flag
         /// </summary>
         private bool isDetected;
 
         /// <summary>
-        /// Interaction logic for MainWindow.xaml
+        /// Is not detected flag.
         /// </summary>
         private bool isNotDetected;
 
         /// <summary>
-        /// 
+        /// Property Changed event.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -72,6 +72,7 @@ namespace ImageProject
             InitializeComponent();
             DataContext = this;
 
+            //setup campare options
             var options = new CompareOptions
             {
                 AnalyzerType = AnalyzerTypes.ExactMatch,
@@ -85,19 +86,15 @@ namespace ImageProject
 
             this.comparer = new BitmapComparer(options);
 
-            this.isStandredSelected = false;
+            //insilize flags
             this.isNotStandredSelected = true;
-
-            this.isDamagedSelected = false;
             this.isNotDamagedSelected = true;
-
-            this.isDetected = false;
             this.isNotDetected = true;
         }
 
 
         /// <summary>
-        /// Interaction logic for MainWindow.xaml
+        /// Close the application
         /// </summary>
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
@@ -106,7 +103,7 @@ namespace ImageProject
 
 
         /// <summary>
-        /// Interaction logic for MainWindow.xaml
+        /// Open Def Image
         /// </summary>
         private void OpenDefImage_Click(object sender, RoutedEventArgs e)
         {
@@ -129,7 +126,7 @@ namespace ImageProject
         }
 
         /// <summary>
-        /// Interaction logic for MainWindow.xaml
+        /// Open second image
         /// </summary>
         private void OpenImage_Click(object sender, RoutedEventArgs e)
         {
@@ -147,30 +144,41 @@ namespace ImageProject
                 RaisePropertyChanged("IsDamagedSelected");
                 RaisePropertyChanged("IsNotDamagedSelected");
 
-                image2 = comparer.Compare(image1,image2);
 
-                if(image2.Flags != image1.Flags)
+                try
                 {
-                    this.isDetected = true;
-                    this.isNotDetected = false;
-                    RaisePropertyChanged("IsDetected");
-                    RaisePropertyChanged("IsNotDetected");
-                }
-                else
-                {
-                    this.isDetected = false;
-                    this.isNotDetected = true;
-                    RaisePropertyChanged("IsDetected");
-                    RaisePropertyChanged("IsNotDetected");
-                }
+                    image2 = comparer.Compare(image1, image2);
+                    if (image2.Flags != image1.Flags)
+                    {
+                        this.isDetected = true;
+                        this.isNotDetected = false;
+                        RaisePropertyChanged("IsDetected");
+                        RaisePropertyChanged("IsNotDetected");
+                    }
+                    else
+                    {
+                        this.isDetected = false;
+                        this.isNotDetected = true;
+                        RaisePropertyChanged("IsDetected");
+                        RaisePropertyChanged("IsNotDetected");
+                    }
 
-                imgPhoto.Source = BitmapToImageSource(image2);
+                    imgPhoto.Source = BitmapToImageSource(image2);
+
+                }
+                catch
+                {
+                    MessageBox.Show("Please enter same size images!");
+                    this.isDamagedSelected = false;
+                    this.isNotDamagedSelected = true;
+                }
+                
             }
         }
 
 
         /// <summary>
-        /// Interaction logic for MainWindow.xaml
+        /// Converts Bitmap to image source.
         /// </summary>
         BitmapImage BitmapToImageSource(Bitmap bitmap)
         {

@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ImageProject"
         mc:Ignorable="d"
         Title="ImageProject"
@@ -16,16 +17,18 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="8*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="12" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
+        <!--Dispaly images-->
         <Grid Grid.Column="0" Background ="Black">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            
+
             <TextBlock 
                 Grid.Column="0" 
                 Margin="10"
@@ -34,13 +37,13 @@
                 Foreground="White"
                 TextAlignment="Center"
                 />
-            
+
             <Image Grid.Column="0"
                 Margin="40"
                 Name="imgDef"
                 Stretch="Fill" 
                 />
-            
+
             <TextBlock 
                 Margin="10"
                 Grid.Column="1" 
@@ -57,53 +60,101 @@
                 />
         </Grid>
 
-        <Grid Grid.Column="1">
+        <Rectangle Grid.Column="1">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="HotPink" Offset="0" />
+                    <GradientStop Color="#604e63" Offset="1" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <!-- Control Panel -->
+        <Grid Grid.Column="2">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.75*" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="225" />
+                <RowDefinition Height="0.25*" />
+                <RowDefinition Height="0.5*" />
                 <RowDefinition Height="0.25*" />
             </Grid.RowDefinitions>
 
             <StackPanel 
-                    Grid.Row="0"
-                    Orientation="Vertical"
-                    HorizontalAlignment="Center"
-                    Margin="20">
-                
+                Grid.Row="0"
+                Orientation="Vertical"
+                HorizontalAlignment="Center"
+                Margin="20"
+                >
                 <!--Select default image-->
                 <TextBlock 
-                    Text="Standard Component" 
+                    Text="Standard" 
                     TextAlignment="Center"
-                    FontSize="14" Foreground="White" 
-                    TextWrapping="WrapWithOverflow"/>
+                    Margin="10"
+                    FontSize="12" Foreground="White" 
+                    />
+
                 <Button 
-                        ToolTip="Open an image has good structure"
-                        Name="OpenDefImage" 
-                        Click="OpenDefImage_Click"
-                        Content="Browse"
-                        />
-                
+                    ToolTip="Open an image has good structure"
+                    Name="OpenDefImage" 
+                    Click="OpenDefImage_Click"
+                    Style="{StaticResource FolderButton}"
+                    >
+                    <materialDesign:PackIcon
+                        Kind="FolderPlus"
+                        Height="40"
+                        Foreground="#604e63"
+                        Width="40"/>
+                </Button>
+
                 <!--Select image-->
                 <TextBlock 
-                    Text="Damaged Component" 
+                    Text="Damaged" 
                     TextAlignment="Center"
-                    Margin="0,20,0,0"
-                    FontSize="14" Foreground="White" 
-                    TextWrapping="WrapWithOverflow"/>
+                    Margin="10"
+                    FontSize="12" Foreground="White" 
+                    />
                 <Button 
-                        ToolTip="Open an image to compare it with the standard image"
-                        Name="OpenImage" 
-                        Click="OpenImage_Click"
-                        Content="Browse"
-                        IsEnabled="{Binding IsStandredSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        />
+                    ToolTip="Open an image to compare it with the standard image"
+                    Name="OpenImage" 
+                    Click="OpenImage_Click"
+                    Background="Black"
+                    IsEnabled="{Binding IsStandredSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{StaticResource FolderButton}"
+                    >
+                <materialDesign:PackIcon
+                        Kind="FolderPlus"
+                        Foreground="#604e63"
+                        Height="40"
+                        Width="40"/>
+                </Button>
 
             </StackPanel>
 
             <StackPanel 
-                Grid.Row="1"
-                Margin="40"
+                    Grid.Row="1"
+                    Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    Margin="10">
+
+                <!--Statistics-->
+                <Button 
+                    Style="{StaticResource PinkButton}"
+                    FontSize="12"
+                    Content="Statistics"
+                    />
+
+                <!--Diagnose-->
+                <Button 
+                    Style="{StaticResource PinkButton}"
+                    FontSize="12"
+                    Content="Diagnose"
+                    />
+
+            </StackPanel>
+
+            <StackPanel 
+                Grid.Row="2"
+                Margin="10"
                 >
                 <Grid>
                     <Grid.RowDefinitions>
@@ -114,92 +165,92 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    
-                    <TextBlock 
-                    Grid.Row="0"
-                    Text="Standard" 
-                    TextAlignment="Center"
-                    Margin="10"
-                    FontSize="12" Foreground="White" 
-                    TextWrapping="WrapWithOverflow"/>
-                    <Ellipse
-                    Grid.Row="1"
-                    Width="40"
-                    Height="40"
-                    Fill="{StaticResource RedGradientBrush}"
-                    Stroke="#604e63"
-                    StrokeThickness="4"
-                    Canvas.Left="10"
-                    Canvas.Top="100"
-                    Visibility="{Binding IsNotStandredSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibility}}"/>
-                    <Ellipse
-                    Grid.Row="1"
-                    Width="40"
-                    Height="40"
-                    Fill="{StaticResource GreenGradientBrush}"
-                    Stroke="#604e63"
-                    StrokeThickness="4"
-                    Canvas.Left="10"
-                    Canvas.Top="100"
-                    Visibility="{Binding IsStandredSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibility}}"/>
-
 
                     <TextBlock 
-                    Grid.Row="2"
-                    Text="Damaged" 
-                    TextAlignment="Center"
-                    Margin="10"
-                    FontSize="12" Foreground="White" 
-                    TextWrapping="WrapWithOverflow"/>
+                        Grid.Row="0"
+                        Text="Standard" 
+                        TextAlignment="Center"
+                        Margin="10"
+                        FontSize="12" Foreground="White" 
+                        TextWrapping="WrapWithOverflow"/>
                     <Ellipse
-                    Grid.Row="3"
-                    Width="40"
-                    Height="40"
-                    Fill="{StaticResource RedGradientBrush}"
-                    Stroke="#604e63"
-                    StrokeThickness="4"
-                    Canvas.Left="10"
-                    Canvas.Top="100"
-                    Visibility="{Binding IsNotDamagedSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibility}}"/>
+                        Grid.Row="1"
+                        Width="40"
+                        Height="40"
+                        Fill="{StaticResource RedGradientBrush}"
+                        Stroke="#604e63"
+                        StrokeThickness="4"
+                        Canvas.Left="10"
+                        Canvas.Top="100"
+                        Visibility="{Binding IsNotStandredSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibility}}"/>
                     <Ellipse
-                    Grid.Row="3"
-                    Width="40"
-                    Height="40"
-                    Fill="{StaticResource GreenGradientBrush}"
-                    Stroke="#604e63"
-                    StrokeThickness="4"
-                    Canvas.Left="10"
-                    Canvas.Top="100"
-                    Visibility="{Binding IsDamagedSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibility}}"/>
+                        Grid.Row="1"
+                        Width="40"
+                        Height="40"
+                        Fill="{StaticResource GreenGradientBrush}"
+                        Stroke="#604e63"
+                        StrokeThickness="4"
+                        Canvas.Left="10"
+                        Canvas.Top="100"
+                        Visibility="{Binding IsStandredSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibility}}"/>
+
 
                     <TextBlock 
-                    Grid.Row="4"
-                    Text="Detect" 
-                    TextAlignment="Center"
-                    Margin="10"
-                    FontSize="12" Foreground="White" 
-                    TextWrapping="WrapWithOverflow"/>
+                        Grid.Row="2"
+                        Text="Damaged" 
+                        TextAlignment="Center"
+                        Margin="10"
+                        FontSize="12" Foreground="White" 
+                        TextWrapping="WrapWithOverflow"/>
                     <Ellipse
-                    Grid.Row="5"
-                    Width="40"
-                    Height="40"
-                    Fill="{StaticResource RedGradientBrush}"
-                    Stroke="#604e63"
-                    StrokeThickness="4"
-                    Canvas.Left="10"
-                    Canvas.Top="100"
-                    Visibility="{Binding IsNotDetected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibility}}"/>
+                        Grid.Row="3"
+                        Width="40"
+                        Height="40"
+                        Fill="{StaticResource RedGradientBrush}"
+                        Stroke="#604e63"
+                        StrokeThickness="4"
+                        Canvas.Left="10"
+                        Canvas.Top="100"
+                        Visibility="{Binding IsNotDamagedSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibility}}"/>
+                    <Ellipse
+                        Grid.Row="3"
+                        Width="40"
+                        Height="40"
+                        Fill="{StaticResource GreenGradientBrush}"
+                        Stroke="#604e63"
+                        StrokeThickness="4"
+                        Canvas.Left="10"
+                        Canvas.Top="100"
+                        Visibility="{Binding IsDamagedSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibility}}"/>
+
+                    <TextBlock 
+                        Grid.Row="4"
+                        Text="Detect" 
+                        TextAlignment="Center"
+                        Margin="10"
+                        FontSize="12" Foreground="White" 
+                        TextWrapping="WrapWithOverflow"/>
+                    <Ellipse
+                        Grid.Row="5"
+                        Width="40"
+                        Height="40"
+                        Fill="{StaticResource RedGradientBrush}"
+                        Stroke="#604e63"
+                        StrokeThickness="4"
+                        Canvas.Left="10"
+                        Canvas.Top="100"
+                        Visibility="{Binding IsNotDetected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibility}}"/>
 
                     <Ellipse
-                    Grid.Row="5"
-                    Width="40"
-                    Height="40"
-                    Fill="{StaticResource GreenGradientBrush}"
-                    Stroke="#604e63"
-                    StrokeThickness="4"
-                    Canvas.Left="10"
-                    Canvas.Top="100"
-                    Visibility="{Binding IsDetected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibility}}"/>
+                        Grid.Row="5"
+                        Width="40"
+                        Height="40"
+                        Fill="{StaticResource GreenGradientBrush}"
+                        Stroke="#604e63"
+                        StrokeThickness="4"
+                        Canvas.Left="10"
+                        Canvas.Top="100"
+                        Visibility="{Binding IsDetected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanToVisibility}}"/>
 
 
                 </Grid>
@@ -209,13 +260,14 @@
             <Button 
                     Name="closeButton" 
                     ToolTip="Close Application"
-                    Grid.Row="2"
+                    Grid.Row="3"
                     Click="CloseButton_Click"
-                    Content="X"
                     Foreground="Red"
                     VerticalAlignment="Bottom"
-                    />
+                    FontSize="20"
+                    Content="x"
+                    Style="{StaticResource PinkButton}"/>
         </Grid>
-        
+
     </Grid>
 </Window>
