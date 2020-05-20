@@ -117,7 +117,6 @@
                     ToolTip="Open an image to compare it with the standard image"
                     Name="OpenImage" 
                     Click="OpenImage_Click"
-                    Background="Black"
                     IsEnabled="{Binding IsStandredSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                     Style="{StaticResource FolderButton}"
                     >
